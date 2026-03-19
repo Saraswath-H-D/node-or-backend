@@ -7,3 +7,8 @@ for(let i=0;i<arg.length;i++){
     console.log("hello,rbr" + arg[i]);
 }
 console.log(process.argv)//returns when we run in git bash by typing node script.js hello world
+const impor=require("./math");//import from math.js
+console.log(impor.muls(2,3))
+console.log(impor)
+
+
