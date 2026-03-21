@@ -2,7 +2,7 @@ module.exports. sum=(a,b)=>a+b; //arrow function means returns automattically wi
 const mul=(a,b)=>a*b;
 let obj={
     
-    muls:mul,
+   muls:mul,
 }
 module.exports=obj;
-//module.exports=123;//export to other file ex: to script.js
+module.exports=123;//export to other file ex: to script.js
