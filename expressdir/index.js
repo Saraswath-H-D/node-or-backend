@@ -6,3 +6,24 @@ app.listen(port,()=>{//arrow function which is called when server is ready to ac
     console.log(`app is listening on port ${port}`)//listen(request listener) creats webserver and bind it to port and callback is called when server is ready to exceute request
 })//to stop server click ctrl +c in bash
 //to send request use browser type localhost:3000
+// app.use((req, res) => {//listen and track
+//     console.log(req);//if request is in http is textbased but req convert into object base for javascript called passing
+//     console.log("request received");//express will by default request and response why?
+//     //res.send("this is basic response")//res.send([body])Sends the HTTP response.The body parameter can be a Buffer object, a String, an object, Boolean, or an Array if we see in localhost:3000 we can see response
+//     res.send({
+//         name:"sara",
+//     })//and we can send in html format also ex:<h1>hello<h1>
+// })//use()server received request is used to register which is executed when request is received 
+app.get("/",(req,res)=>{
+    res.send("root pat");
+});
+app.get("/orange",(req,res)=>{
+    res.send("orange path");
+});
+app.get("/apple",(req,res)=>{
+    res.send("apple")
+});//get() take path and response when /orange
+// app.get("*",(req,res)=>{
+//     res.send("not exist")
+// });
+//if we type path which not exist it iwill execute
