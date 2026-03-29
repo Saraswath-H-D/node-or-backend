@@ -27,3 +27,15 @@ app.get("/apple",(req,res)=>{
 //     res.send("not exist")
 // });
 //if we type path which not exist it iwill execute
+app.get("/:username/:id",(req,res)=>{//:username act as va4riable also :id
+    
+    let{username,id}=req.params;//extract username and id from req.params req.params is used to get values from the URL path (route parameters).
+    //console.log(req.params);//params is object which contain all parameter in path
+    res.send(`hello and ${username}` )//also show in bash as json
+}
+);
+app.get("/search",(req,res)=>{
+   let {q}=req.query;
+    // console.log(req.query)//req.query is used to get data from the URL query parameters
+    res.send(`hellpo ${q}`)//localhost:3000/search?q=bye in browser 
+})//localhost:3000/search?q=bye&color=green also in browser 
