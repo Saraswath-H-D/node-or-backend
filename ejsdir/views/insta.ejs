@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instapage</title>
+</head>
+<body>
+    <h1>
+        this page is <%=username%>
+    </h1>
+    <h2>
+        <ul>
+              followers list is<%for(let name of followers){%>
+            <li><%=name%></li>
+            <%}%>
+        </ul>
+       
+    </h2>
+    <button>
+        follow
+    </button>
+    <button>
+        message
+    </button>
+</body>
+</html>

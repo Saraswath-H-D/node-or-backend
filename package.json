@@ -12,9 +12,12 @@
   },
   "author": "",
   "license": "ISC",
-  "type":"module",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Saraswath-H-D/node-or-backend/issues"
   },
-  "homepage": "https://github.com/Saraswath-H-D/node-or-backend#readme"
+  "homepage": "https://github.com/Saraswath-H-D/node-or-backend#readme",
+  "dependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
