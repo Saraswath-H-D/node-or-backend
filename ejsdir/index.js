@@ -2,6 +2,8 @@ const express=require("express");///ejs is already installed during express
 const app=express();
 const port=3000;//set() ex view-engine is a setting used to specify template use for rendering views
 const Path=require("path")
+app.use(express.static(Path.join(__dirname,"public")))//static used to serve static files like css js
+
 app.set("view engine","ejs");//ejs is template engine which help to generate own html in js
 app.set("views",Path.join(__dirname,"views"))//_dirname is a global variable which give current directory path and join() is used to join two path together
 app.get("/",(req,res)=>{
@@ -11,10 +13,20 @@ app.get("/hello",(req,res)=>{
     let diceval=Math.floor(Math.random()*6)+1;//assume it come from database and we want to pass it to home.ejs
     res.render("home.ejs",{num:diceval})
 })
+// app.get("/ig/:username",(req,res)=>{
+//     const followers=["bhim","ram","sara"];
+//     let{username}=req.params;
+//     res.render("insta.ejs",{username,followers})
+// })
 app.get("/ig/:username",(req,res)=>{
-    const followers=["bhim","ram","sara"];
     let{username}=req.params;
-    res.render("insta.ejs",{username,followers})
+    const data=require("./views/data.json")
+    const ans=data[username];
+    if(ans){
+        res.render("insta.ejs",{ans})
+    }else{
+        res.send("err.ejs")
+    }
 })
 
 app.get("/heelo",(req,res)=>{
