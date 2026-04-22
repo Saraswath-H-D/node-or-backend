@@ -2,18 +2,20 @@ const express=require("express");
 const app =express();
 let port =3000;
 const path=require("path");
+const{v4:uuidv4}=require("uuid");//v4 is version
+// we type uuidv4() in posts id;random unique id in same func//npm i uuid is a package that generates unique id as=>'1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 app.use(express.urlencoded({extended:true}));//used to parse so express can understand data coming
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")))
 let posts=[
          {
-            iden:'1a',
+            iden:uuidv4(),
             username:"hi",
             content:"im hero",
          },
          {
-            iden:'2a',
+            iden:uuidv4(),
             username:"hlo",
             content:"im heroine",
          },
@@ -26,18 +28,30 @@ app.get("/posts",(req,res)=>{
 })
 app.get("/posts/:id",(req,res)=>{//http://localhost:3000/posts/1a
     let {id}=req.params;
+    console.log(id);
     let post=posts.find((p)=>id===p.iden);//.find(): This is a built-in method that goes through the array and returns the first element that matches your condition.
 //(p) => id === p.id: This is a callback function (arrow function). It checks every post (p) in the array to see if its id matches the id you are looking fo
-    console.log(post);
-    res.send("request working");
+    
+    res.send(`request working ${posts.iden}`);
 })
-app.get("/posts/new",(req,res)=>{
+app.get("/posts/new",(req,res)=>{//see last 3 videos of rest in future  to see edit,destroy and update
       res.render("new.ejs")
    
+})
+app.patch("/posts/:id",(req,res)=>{
+     let {id}=req.params;
+    let newcontent=req.body.content;
+    res.send("patch request working")
 })
 app.post("/posts",(req,res)=>{
    console.log(req.body)//req.body recieves information by post
    res.redirect("/posts")//Express.js ನಲ್ಲಿ res.redirect("/posts") ಎಂದರೆ ಸರ್ವರ್ ಬಳಕೆದಾರನನ್ನು (browser) ಬೇರೊಂದು ಪುಟಕ್ಕೆ (URL) ಕಳುಹಿಸುತ್ತದೆ ಎಂದರ್ಥ.by default get request will be sent to /posts and then we render index.js
+})
+app.delete("/posts/:id",(req,res)=>{
+     let {id}=req.params;
+    
+     posts=posts.filter((p)=>id!==p.iden);
+     res.send("delete")
 })
 app.listen(port,()=>{
 console.log(`server is running on port ${port}`);
@@ -109,3 +123,4 @@ console.log(`server is running on port ${port}`);
 // found 0 vulnerabilities
 // PS C:\Users\LENOVO\webclassroom\backend\Rest_class> touch index.js
 // PS C:\Users\LENOVO\webclassroom\backend\Rest_class> 
+//near href type edit
