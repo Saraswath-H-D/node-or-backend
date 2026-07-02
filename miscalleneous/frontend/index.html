@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get" action="/register"><!--http://127.0.0.1:3000/register?username=hello we can see hello because data is passed in query string and get means data is searched-->
+    <input placeholder="username" name="username" type="text">
+    <button>
+        submit
+    </button>
+   </form>
+ <form method="post" action="/register"><!--http://127.0.0.1:3000/register here no query para because data sent in the request body so we not see and post means data is submitted-->
+    <input placeholder="username" name="username" type="text">
+    <button>
+        submit
+    </button>
+   </form>
+</body>
+</html>
